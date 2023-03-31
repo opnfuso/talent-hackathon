@@ -20,6 +20,7 @@ var cameraArray={};
 
 //esp32cam websocket
 wss1.on('connection', function connection(ws) {
+  console.log("connection")
   ws.on('message', function incoming(message) {
     wss2.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
@@ -31,6 +32,7 @@ wss1.on('connection', function connection(ws) {
 
 //webbrowser websocket
 wss2.on('connection', function connection(ws) {
+  console.log("connection")
   ws.on('message', function incoming(message) {
   	// nothing here should be received
     console.log('received wss2: %s', message);
