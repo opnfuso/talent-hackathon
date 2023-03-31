@@ -30,6 +30,10 @@ wss1.on('connection', function connection(ws) {
   });
 });
 
+wss1.on("close", function close(ws){
+  console.log("esp close")
+})
+
 //webbrowser websocket
 wss2.on('connection', function connection(ws) {
   console.log("connection")
