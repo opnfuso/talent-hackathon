@@ -15,12 +15,15 @@ const wss1 = new WebSocket.Server({ noServer: true });
 const wss2 = new WebSocket.Server({ noServer: true });
 
 
-
-var cameraArray={};
+function heartbeat() {
+  this.isAlive = true;
+}
 
 //esp32cam websocket
 wss1.on('connection', function connection(ws) {
-  console.log("connection esp32")
+  ws.isAlive = true;
+  ws.on('error', console.error);
+  ws.on('pong', heartbeat);
   ws.on('message', function incoming(message) {
     wss2.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
@@ -28,6 +31,22 @@ wss1.on('connection', function connection(ws) {
       }
     });
   });
+});
+
+const interval = setInterval(function ping() {
+  wss1.clients.forEach(function each(ws) {
+    if (ws.isAlive === false) {
+      console.log("esp terminated")
+      return ws.terminate()
+    };
+
+    ws.isAlive = false;
+    ws.ping();
+  });
+}, 30000);
+
+wss1.on('close', function close() {
+  clearInterval(interval);
 });
 
 //webbrowser websocket
