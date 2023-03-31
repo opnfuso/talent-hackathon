@@ -30,10 +30,6 @@ wss1.on('connection', function connection(ws) {
   });
 });
 
-setInterval(() => {
-  wss1.emit("ping")
-}, 1000)
-
 //webbrowser websocket
 wss2.on('connection', function connection(ws) {
   console.log("connection")
