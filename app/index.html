@@ -49,8 +49,13 @@
       };
 
       ws.onmessage = function (message) {
-        var url = URL.createObjectURL(message.data);
-        img.src = url;
+        if (message.data !== "terminated") {
+          var url = URL.createObjectURL(message.data);
+          img.src = url;
+        } else {
+          alert("La camara se ha desconectado");
+          // location.reload();
+        }
       };
     </script>
     <!-- <script src="./dist/renderer.js"></script> -->
