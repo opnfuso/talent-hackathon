@@ -1,12 +1,14 @@
 {
   "name": "talent_hackathon_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam ac tortor vitae purus faucibus ornare s",
+  "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "eslint -c .eslintrc --ext .ts ./src",
-    "start": "npm run build && electron ./dist/main.js"
+    "start": "npm run build && electron ./dist/main.js",
+    "pack:winx64": "electron-packager . vrovcor --platform=win32 --arch=x64 --out package/ --overwrite  "
   },
   "repository": "",
   "keywords": [
