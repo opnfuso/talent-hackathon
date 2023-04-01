@@ -4,22 +4,55 @@
     <meta charset="UTF-8" />
     <title>Hello World!</title>
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
+    <!-- <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
-    />
+    /> -->
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>, Chromium
-    <span id="chrome-version"></span>, and Electron
-    <span id="electron-version"></span>.
+    <div class="main_content">
+      <div class="page_title"><h1 class="tcenter">Streaming ESPCAM</h1></div>
+      <div class="tcenter">
+        <canvas id="canvas">
+          Lo sentimos, su navegador no es compatible &lt;canvas&gt;.
+        </canvas>
+      </div>
+    </div>
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./dist/renderer.js"></script>
+    <script>
+      const url = "wss://talent-hackathon.herokuapp.com";
+      var portStr = "";
+      console.log(url + portStr + "/jpgstream_client");
+      var ws = new WebSocket(url + portStr + "/jpgstream_client");
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      var img = new Image();
+      img.onload = function () {
+        canvas.style.width = this.width + "px";
+        canvas.style.height = this.height + "px";
+        ctx.drawImage(
+          this,
+          0,
+          0,
+          this.width,
+          this.height, // source rectangle
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        ); // destination rectangle
+      };
+
+      ws.onmessage = function (message) {
+        var url = URL.createObjectURL(message.data);
+        img.src = url;
+      };
+    </script>
+    <!-- <script src="./dist/renderer.js"></script> -->
   </body>
 </html>
