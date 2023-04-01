@@ -35,7 +35,9 @@ wss1.on("connection", function connection(ws) {
 const interval = setInterval(function ping() {
   wss1.clients.forEach(function each(ws) {
     if (ws.isAlive === false) {
-      ws.send("terminated");
+      wss2.clients.forEach((ws) => {
+        ws.send("terminated");
+      });
       return ws.terminate();
     }
 
