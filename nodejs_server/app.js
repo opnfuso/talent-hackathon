@@ -35,7 +35,7 @@ wss1.on("connection", function connection(ws) {
 const interval = setInterval(function ping() {
   wss1.clients.forEach(function each(ws) {
     if (ws.isAlive === false) {
-      ws.emit("message", { message: "esp terminated" });
+      ws.send("terminated");
       return ws.terminate();
     }
 
