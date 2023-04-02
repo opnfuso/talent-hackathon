@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
 window.addEventListener("DOMContentLoaded", () => {
@@ -9,6 +10,9 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   for (const type of ["chrome", "node", "electron"]) {
-    replaceText(`${type}-version`, process.versions[type as keyof NodeJS.ProcessVersions]);
+    replaceText(
+      `${type}-version`,
+      process.versions[type as keyof NodeJS.ProcessVersions]
+    );
   }
 });
