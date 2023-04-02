@@ -21,6 +21,19 @@
           Lo sentimos, su navegador no es compatible &lt;canvas&gt;.
         </canvas>
       </div>
+      <input
+        id="callee-phone-input"
+        type="text"
+        placeholder="Who would you like to call?"
+        style="margin-bottom: 1em; width: 230px"
+      />
+      <div>
+        <button id="call-phone-button" type="button">Start Call</button>
+        &nbsp;
+        <button id="hang-up-phone-button" type="button" disabled="true">
+          Hang Up
+        </button>
+      </div>
     </div>
 
     <script>
@@ -57,6 +70,31 @@
           // location.reload();
         }
       };
+
+      callPhoneButton.addEventListener("click", () => {
+        // start a call to phone
+        const phoneToCall = calleePhoneInput.value;
+        call = callAgent.startCall([{ phoneNumber: phoneToCall }], {
+          alternateCallerId: {
+            phoneNumber:
+              "YOUR AZURE REGISTERED PHONE NUMBER HERE: +12223334444",
+          },
+        });
+        // toggle button states
+        hangUpPhoneButton.disabled = false;
+        callPhoneButton.disabled = true;
+      });
+
+      hangUpPhoneButton.addEventListener("click", () => {
+        // end the current call
+        call.hangUp({
+          forEveryone: true,
+        });
+
+        // toggle button states
+        hangUpPhoneButton.disabled = true;
+        callPhoneButton.disabled = false;
+      });
     </script>
     <script src="./dist/renderer.js"></script>
   </body>
