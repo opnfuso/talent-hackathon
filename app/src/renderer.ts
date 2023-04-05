@@ -5,34 +5,72 @@
 // nodeIntegration is set to true in webPreferences.
 // Use preload.js to selectively enable features
 // needed in the renderer process.
-const { Vonage } = require("@vonage/server-sdk");
-const { NCCOBuilder, Stream, OutboundCallWithNCCO } = require("@vonage/voice");
+const axios = require("axios");
 
-const vonage = new Vonage({
-  apiKey: "6b9e06a9",
-  apiSecret: "kNPNBIl7UuPKbppC",
-  applicationId: "ab222f7f-dc42-4094-a539-7d417104c927",
-  privateKey: "../private.key",
-});
+const token =
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODA3MzY5NjcsImV4cCI6MTY4MjAzMjk2NywianRpIjoiUUFoMHZFc29KUUZQIiwiYXBwbGljYXRpb25faWQiOiJhYjIyMmY3Zi1kYzQyLTQwOTQtYTUzOS03ZDQxNzEwNGM5MjciLCJzdWIiOiIiLCJhY2wiOiIifQ.Ys90yVvA37ZBk8QP3rk9x6wEulRW2Hs16OVWlKp0KqxTr7dcMBn8lHJ9r-eo52bROoNyoua97YUibBvcY6QVr5z-HGFogIUw3aV5jCurcfcXKjfkRwegJuz0pyOXNtrqaO3uvgsOabBSwFwYTBMDc1djNlp19SgBvrRu7OHz33ftuRzO2Ygo0qZvjw9RVqSAydAkpDwBa4tsa3eCajaZppC2UmDn3QUOxusC67AFllxyPaSi8jocCx6eJyvqM_dzVsYtT5iwEjPo64mKvqFcQk3R4Kk2p_ns4AhzqDj5ZfOsq2ZK2nlAPH1K4K8UJU9HZAQlh4FeNN_I1cQ-cT45IQ";
+
+const config = {
+  headers: { Authorization: `Bearer ${token}` },
+};
+
+let callId: string;
 
 async function makeCall() {
-  const builder = new NCCOBuilder();
-  builder.addAction(
-    new Stream(
-      "https://github.com/anars/blank-audio/blob/master/1-hour-and-20-minutes-of-silence.mp3?raw=true",
-      -1,
-      false,
-      0
-    )
-  );
-  const resp = await vonage.voice.createOutboundCall(
-    new OutboundCallWithNCCO(builder.build(), {
-      number: "5213320683941 ",
-      type: "phone",
-    })
+  const response = await axios.post(
+    "https://api.nexmo.com/v1/calls/",
+    {
+      ncco: [
+        {
+          action: "stream",
+          streamUrl: [
+            "https://github.com/anars/blank-audio/blob/master/1-hour-and-20-minutes-of-silence.mp3?raw=true",
+          ],
+          loop: 0,
+          level: -1,
+        },
+      ],
+      to: [
+        {
+          type: "phone",
+          number: "5213320683941",
+        },
+      ],
+      from: {
+        type: "phone",
+        number: "5213320683941",
+      },
+    },
+    config
   );
 
-  console.log(resp);
+  callId = response.data.uuid;
 }
 
-const $callBtn = document.getElementById;
+async function hungUpCall(callId: string) {
+  axios.put(
+    `https://api.nexmo.com/v1/calls/${callId}`,
+    {
+      action: "hangup",
+    },
+    config
+  );
+}
+
+const $callBtn = document.getElementById("llamar");
+
+const $hungUpBtn = document.getElementById("colgar");
+
+$callBtn.addEventListener("click", () => {
+  alert("Iniciando conexión");
+  makeCall();
+  $callBtn.setAttribute("disabled", "");
+  $hungUpBtn.removeAttribute("disabled");
+});
+
+$hungUpBtn.addEventListener("click", () => {
+  alert("Terminando conexión");
+  hungUpCall(callId);
+  $hungUpBtn.setAttribute("disabled", "");
+  $callBtn.removeAttribute("disabled");
+});
