@@ -143,4 +143,6 @@ dist
 
 package
 
+private.key
+
 # End of https://www.toptal.com/developers/gitignore/api/node
