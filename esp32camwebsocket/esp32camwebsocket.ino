@@ -114,7 +114,7 @@ void setup() {
   setupCamera();
 
   // server address, port and URL
-  webSocket.begin("talent-hackathon.herokuapp.com", 80,"/jpgstream_server");
+  webSocket.beginSSL("talent-hackathon-production.up.railway.app", 443, "/jpgstream_server");
   webSocket.onEvent(webSocketEvent);
   webSocket.setReconnectInterval(5000);
   webSocket.enableHeartbeat(15000, 3000, 2);
