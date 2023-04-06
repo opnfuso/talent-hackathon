@@ -47,6 +47,16 @@ async function makeCall() {
   callId = response.data.uuid;
 }
 
+async function sendTone(tone: string, callId: string) {
+  axios.put(
+    `https://api.nexmo.com/v1/calls/${callId}/dtmf`,
+    {
+      digits: tone,
+    },
+    config
+  );
+}
+
 async function hungUpCall(callId: string) {
   axios.put(
     `https://api.nexmo.com/v1/calls/${callId}`,
@@ -74,3 +84,29 @@ $hungUpBtn.addEventListener("click", () => {
   $hungUpBtn.setAttribute("disabled", "");
   $callBtn.removeAttribute("disabled");
 });
+
+const $btn1 = document.getElementById("1");
+const $btn2 = document.getElementById("2");
+const $btn3 = document.getElementById("3");
+const $btn4 = document.getElementById("4");
+const $btn5 = document.getElementById("5");
+const $btn6 = document.getElementById("6");
+const $btn7 = document.getElementById("7");
+const $btn8 = document.getElementById("8");
+const $btn9 = document.getElementById("9");
+const $btn10 = document.getElementById("10");
+const $btn0 = document.getElementById("0");
+const $btn12 = document.getElementById("12");
+
+$btn1.addEventListener("click", () => sendTone("1", callId));
+$btn2.addEventListener("click", () => sendTone("2", callId));
+$btn3.addEventListener("click", () => sendTone("3", callId));
+$btn4.addEventListener("click", () => sendTone("4", callId));
+$btn5.addEventListener("click", () => sendTone("5", callId));
+$btn6.addEventListener("click", () => sendTone("6", callId));
+$btn7.addEventListener("click", () => sendTone("7", callId));
+$btn8.addEventListener("click", () => sendTone("8", callId));
+$btn9.addEventListener("click", () => sendTone("9", callId));
+$btn10.addEventListener("click", () => sendTone("*", callId));
+$btn0.addEventListener("click", () => sendTone("0", callId));
+$btn12.addEventListener("click", () => sendTone("#", callId));
