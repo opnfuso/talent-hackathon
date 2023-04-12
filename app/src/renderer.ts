@@ -34,13 +34,13 @@ async function makeCall() {
         {
           type: "phone",
           // number: "5213310819243",
-          number: "5213320683941"
+          number: "5213320683941",
         },
       ],
       from: {
         type: "phone",
         // number: "5213310819243",
-        number: "5213320683941"
+        number: "5213320683941",
       },
     },
     config
@@ -96,9 +96,6 @@ const $btn6 = document.getElementById("6");
 const $btn7 = document.getElementById("7");
 const $btn8 = document.getElementById("8");
 const $btn9 = document.getElementById("9");
-const $btn10 = document.getElementById("10");
-const $btn0 = document.getElementById("0");
-const $btn12 = document.getElementById("12");
 
 $btn1.addEventListener("click", () => sendTone("1", callId));
 $btn2.addEventListener("click", () => sendTone("2", callId));
@@ -109,6 +106,3 @@ $btn6.addEventListener("click", () => sendTone("6", callId));
 $btn7.addEventListener("click", () => sendTone("7", callId));
 $btn8.addEventListener("click", () => sendTone("8", callId));
 $btn9.addEventListener("click", () => sendTone("9", callId));
-$btn10.addEventListener("click", () => sendTone("*", callId));
-$btn0.addEventListener("click", () => sendTone("0", callId));
-$btn12.addEventListener("click", () => sendTone("#", callId));
