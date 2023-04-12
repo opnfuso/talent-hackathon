@@ -26,7 +26,7 @@
   <body class="bg-dark text-white">
     <main class="p-4">
       <h1 class="text-center">VROVCOR APP</h1>
-      <div class="row flex-lg-row-reverse align-items-center g-5 py-5 mt-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
         <div class="col-10 col-sm-8 col-lg-6">
           <!-- <img
             src="bootstrap-themes.png"
@@ -58,59 +58,66 @@
               Default
             </button>
           </div> -->
+          <button type="button" class="btn btn-success" id="llamar">
+            Iniciar conexión
+          </button>
+    
+          <button type="button" class="btn btn-danger ms-5" id="colgar" disabled>
+            Terminar conexión
+          </button>
           <div class="container">
             <div class="row m-5">
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="1">
-                  <i class="bi bi-arrow-left"></i>
+                  <img src="./public/images/Giro a la izquierda.png" alt="Giro a la izquierda" height="90px">
                 </button>
               </div>
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="2">
-                  <i class="bi bi-arrow-up"></i>
+                  <img src="./public/images/Avanze del veiculo.png" alt="Alto total" height="90px">
                 </button>
               </div>
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="3">
-                  <i class="bi bi-arrow-right"></i>
+                  <img src="./public/images/Giro a la derecha.png" alt="Giro a la derecha" height="90px">
                 </button>
               </div>
             </div>
             <div class="row m-5">
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="4">
-                  4
+                  <img src="./public/images/Desplazamiento lento del eje vertical de la cámara para arriba.png" alt="Levantar la camara" height="90px">
                 </button>
               </div>
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="5">
-                  <i class="bi bi-slash-circle-fill"></i>
+                  <img src="./public/images/alto total.png" alt="Alto total" height="90px">
                 </button>
               </div>
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="6">
-                  6
+                  <img src="./public/images/Desplazamiento lento del eje vertical de la cámara para abajo.png" alt="Bajar camara" height="90px">
                 </button>
               </div>
             </div>
             <div class="row m-5">
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="7">
-                  7
+                  <img src="./public/images/Desplazamiento lento del eje horizontal de la cámara a la derecha.png" alt="Mover derecha camara" height="90px">
                 </button>
               </div>
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="8">
-                  <i class="bi bi-arrow-down"></i>
+                  <img src="./public/images/Avance en reversa del vehículo.png" alt="Reversa" height="90px">
                 </button>
               </div>
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="9">
-                  9
+                  <img src="./public/images/Desplazamiento lento del eje horizontal de la cámara a la izquierda.png" alt="Mover izquierda camara" height="90px">
                 </button>
               </div>
             </div>
-            <div class="row m-5">
+            <!-- <div class="row m-5">
               <div class="col-4">
                 <button type="button" class="btn btn-light btn-lg" id="10">
                   *
@@ -126,18 +133,10 @@
                   #
                 </button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
-
-      <button type="button" class="btn btn-success" id="llamar">
-        Iniciar conexión
-      </button>
-
-      <button type="button" class="btn btn-danger ms-5" id="colgar" disabled>
-        Terminar conexión
-      </button>
     </main>
 
     <script>

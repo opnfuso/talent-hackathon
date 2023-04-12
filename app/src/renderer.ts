@@ -33,12 +33,14 @@ async function makeCall() {
       to: [
         {
           type: "phone",
-          number: "5213310819243",
+          // number: "5213310819243",
+          number: "5213320683941"
         },
       ],
       from: {
         type: "phone",
-        number: "5213310819243",
+        // number: "5213310819243",
+        number: "5213320683941"
       },
     },
     config
