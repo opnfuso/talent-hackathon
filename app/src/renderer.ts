@@ -100,6 +100,18 @@ const $btna1 = document.getElementById("a1");
 const $btna2 = document.getElementById("a2");
 const $btna3 = document.getElementById("a3");
 const $btna4 = document.getElementById("a4");
+const $btnRGB1 = document.getElementById("b1");
+const $btnRGB2 = document.getElementById("b2");
+const $btnRGB3 = document.getElementById("b3");
+const $btnRGB4 = document.getElementById("b4");
+const $btnRGB5 = document.getElementById("b5");
+const $btnRGB6 = document.getElementById("b6");
+const $btnRGB7 = document.getElementById("b7");
+
+
+
+
+
 
 $btn1.addEventListener("click", () => sendTone("1", callId));
 $btn2.addEventListener("click", () => sendTone("2", callId));
@@ -114,3 +126,11 @@ $btna1.addEventListener("click", () => sendTone("0*", callId));
 $btna2.addEventListener("click", () => sendTone("0#", callId));
 $btna3.addEventListener("click", () => sendTone("00", callId));
 $btna4.addEventListener("click", () => sendTone("05", callId));
+$btnRGB1.addEventListener("click", () => sendTone("*1", callId));
+$btnRGB2.addEventListener("click", () => sendTone("*2", callId));
+$btnRGB3.addEventListener("click", () => sendTone("*3", callId));
+$btnRGB4.addEventListener("click", () => sendTone("*4", callId));
+$btnRGB5.addEventListener("click", () => sendTone("*5", callId));
+$btnRGB6.addEventListener("click", () => sendTone("*6", callId));
+$btnRGB7.addEventListener("click", () => sendTone("*7", callId));
+
