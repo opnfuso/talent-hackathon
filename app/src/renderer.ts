@@ -107,6 +107,7 @@ const $btnRGB4 = document.getElementById("b4");
 const $btnRGB5 = document.getElementById("b5");
 const $btnRGB6 = document.getElementById("b6");
 const $btnRGB7 = document.getElementById("b7");
+const $btnRGB8 = document.getElementById("b8");
 
 
 
@@ -133,4 +134,5 @@ $btnRGB4.addEventListener("click", () => sendTone("*4", callId));
 $btnRGB5.addEventListener("click", () => sendTone("*5", callId));
 $btnRGB6.addEventListener("click", () => sendTone("*6", callId));
 $btnRGB7.addEventListener("click", () => sendTone("*7", callId));
+$btnRGB8.addEventListener("click", () => sendTone("*8", callId));
 
