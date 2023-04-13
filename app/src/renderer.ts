@@ -73,6 +73,10 @@ const $callBtn = document.getElementById("llamar");
 
 const $hungUpBtn = document.getElementById("colgar");
 
+function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 $callBtn.addEventListener("click", () => {
   alert("Iniciando conexión");
   makeCall();
@@ -109,11 +113,6 @@ const $btnRGB6 = document.getElementById("b6");
 const $btnRGB7 = document.getElementById("b7");
 const $btnRGB8 = document.getElementById("b8");
 
-
-
-
-
-
 $btn1.addEventListener("click", () => sendTone("1", callId));
 $btn2.addEventListener("click", () => sendTone("2", callId));
 $btn3.addEventListener("click", () => sendTone("3", callId));
@@ -127,12 +126,35 @@ $btna1.addEventListener("click", () => sendTone("0*", callId));
 $btna2.addEventListener("click", () => sendTone("0#", callId));
 $btna3.addEventListener("click", () => sendTone("00", callId));
 $btna4.addEventListener("click", () => sendTone("05", callId));
-$btnRGB1.addEventListener("click", () => sendTone("*1", callId));
-$btnRGB2.addEventListener("click", () => sendTone("*2", callId));
-$btnRGB3.addEventListener("click", () => sendTone("*3", callId));
-$btnRGB4.addEventListener("click", () => sendTone("*4", callId));
-$btnRGB5.addEventListener("click", () => sendTone("*5", callId));
-$btnRGB6.addEventListener("click", () => sendTone("*6", callId));
-$btnRGB7.addEventListener("click", () => sendTone("*7", callId));
-$btnRGB8.addEventListener("click", () => sendTone("*8", callId));
-
+$btnRGB1.addEventListener("click", () => {
+  sendTone("*1", callId);
+  delay(3000).then(() => sendTone("5", callId));
+});
+$btnRGB2.addEventListener("click", () => {
+  sendTone("*2", callId);
+  delay(3000).then(() => sendTone("5", callId));
+});
+$btnRGB3.addEventListener("click", () => {
+  sendTone("*3", callId);
+  delay(3000).then(() => sendTone("5", callId));
+});
+$btnRGB4.addEventListener("click", () => {
+  sendTone("*4", callId);
+  delay(3000).then(() => sendTone("5", callId));
+});
+$btnRGB5.addEventListener("click", () => {
+  sendTone("*5", callId);
+  delay(3000).then(() => sendTone("5", callId));
+});
+$btnRGB6.addEventListener("click", () => {
+  sendTone("*6", callId);
+  delay(3000).then(() => sendTone("5", callId));
+});
+$btnRGB7.addEventListener("click", () => {
+  sendTone("*7", callId);
+  delay(3000).then(() => sendTone("5", callId));
+});
+$btnRGB8.addEventListener("click", () => {
+  sendTone("*8", callId);
+  delay(3000).then(() => sendTone("5", callId));
+});
